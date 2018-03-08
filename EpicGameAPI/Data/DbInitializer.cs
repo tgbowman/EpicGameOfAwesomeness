@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using EpicGameAPI.Data;
 using System.Collections.Generic;
 
-namespace BagoLootAPI.Data
+namespace EpicGameAPI.Data
 {
     public static class DbInitializer
     {
