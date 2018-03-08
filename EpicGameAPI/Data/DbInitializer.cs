@@ -228,16 +228,82 @@ namespace BagoLootAPI.Data
                 context.RoadBlock.Add(Woods_2);
                 context.SaveChanges();
 
-                
+                var optionsWood_1 = new PathOption[]
+                {
+                    new PathOption()
+                    {
+                        Description = "Draw your weapon and prepare for battle!  This creature cannot be allowed to terrorize your people!",
+                        LeadsToCombat = true
+                    },
+                    new PathOption()
+                    {
+                        Description = "The creature fills you with terror and you turn and run back towards the woods to try and escape!",
+                        LeadsToCombat = false
+                    }
+                };
 
+                foreach(PathOption o in optionsWood_1)
+                {
+                    context.PathOption.Add(o);
 
+                    StoryPath path = new StoryPath();
+                    path.PathOptionId = o.Id;
+                    path.RoadBlockId = Woods_1.Id;
 
+                    context.StoryPath.Add(path);
+                }
+
+                context.SaveChanges();
+
+                RoadBlock Woods_1_2 = new RoadBlock();
+                Woods_1_2.AdventureId = adventure.Single(a => a.Title == "The Epic One").Id;
+                Woods_1_2.Description = "The Lich hears you rushing away!  The air around you glows green and you feel your body leave the ground.  You are pulled back with such force that the air is knocked out of your lungs!  The Lich is in front of you now, its eyes glowing a sinister blue.  It raises a hand and lighting crackles from its fingertips.  Your body is wracked with pain and you all to the ground in a heap!";
+                Woods_1_2.PreviousOptionId = optionsWood_1.Single(o => o.Description == "The creature fills you with terror and you turn and run back towards the woods to try and escape!").Id;
+                Woods_1_2.StartingPoint = false;
+
+                context.RoadBlock.Add(Woods_1_2);
+                context.SaveChanges();
+
+                PathOption Woods_1_2options = new PathOption();
+                Woods_1_2options.Description = "There is no escaping!  Stand and draw your weapon.  Even though you are injured the time has come to end this!";
+                Woods_1_2options.LeadsToCombat = true;
+
+                context.PathOption.Add(Woods_1_2options);
+
+                StoryPath WoodsPathFinal = new StoryPath();
+                WoodsPathFinal.PathOptionId = Woods_1_2options.Id;
+                WoodsPathFinal.RoadBlockId = Woods_1_2.Id;
+
+                context.StoryPath.Add(WoodsPathFinal);
+                context.SaveChanges();
+
+                RoadBlock WoodsFinale1 = new RoadBlock()
+                {
+                    Description = "With one final blow, the Lich lets out an agonizing screech and dissipates into a clowd of smoke.  You are vicotrious!  The Lich was unusccessful in creating its phylactery.  You grab the necklace from the ground and venture back towards the village.  You find the woman waiting by the roadside.  You hand her the necklace and she thanks you!  You turn towards the nearest tavern, you deserve a drink!",
+                    StartingPoint = false,
+                    AdventureId = adventure.Single(a => a.Title == "The Epic One").Id,
+                    PreviousOptionId = Woods_1_2options.Id,
+                };
+
+                context.RoadBlock.Add(WoodsFinale1);
+                context.SaveChanges();
+
+                RoadBlock WoodsFinale2 = new RoadBlock()
+                {
+                    Description = "With one final blow, the Lich lets out an agonizing screech and dissipates into a clowd of smoke.  You are vicotrious!  The Lich was unusccessful in creating its phylactery.  You grab the necklace from the ground and venture back towards the village.  You find the woman waiting by the roadside.  You hand her the necklace and she thanks you!  You turn towards the nearest tavern, you deserve a drink!",
+                    StartingPoint = false,
+                    AdventureId = adventure.Single(a => a.Title == "The Epic One").Id,
+                    PreviousOptionId = optionsWood_1.Single(o => o.Description == "Draw your weapon and prepare for battle!  This creature cannot be allowed to terrorize your people!").Id
+                };
+
+                context.RoadBlock.Add(WoodsFinale2);
+                context.SaveChanges();
 
 
 
                 RoadBlock roadBlock2_2 = new RoadBlock();
                 roadBlock2_2.AdventureId = adventure.Single(a => a.Title == "The Epic One").Id;
-                roadBlock2_2.Description = "As you turn to leave the woman becomes angry.  You turn away to head back towards the barracks.  You hear cloth tearing, bones breaking, and a bone chilling howl from behind you.";
+                roadBlock2_2.Description = "As you turn to leave the woman becomes angry.  You turn away to head back towards the barracks.  You hear the sound of bones breaking, and cloth ripping.  The moon goes dark and the world rings out with a bellowing roar!";
                 roadBlock2_2.PreviousOptionId = options1.Single(o => o.Description == "Keep on walking, this isn't any of your concern.").Id;
                 roadBlock2_2.StartingPoint = false;
 
@@ -273,7 +339,7 @@ namespace BagoLootAPI.Data
 
                 RoadBlock roadBlock3_1 = new RoadBlock();
                 roadBlock3_1.AdventureId = adventure.Single(a => a.Title == "The Epic One").Id;
-                roadBlock3_1.Description = "As you turn you see an enormous beast where the woman once stood.  The beast stands on two legs, and has facial features not unlike the wolves you protect the villagers from.  Clearly the woman was hiding her true nature from you.  The werewolf bares it's claws and belows a challanging roar towards you!";
+                roadBlock3_1.Description = "As you turn you see an enormous dragon where the woman once stood.  The dragon is black with glowing red eyes.  Its immense wings unfold from its back.  Smoke and fiery sparks lick from its great jaws.  Clearly the woman was hiding her true nature from you.  The dragon bares takes a step towards you and belows a challanging roar!";
                 roadBlock3_1.PreviousOptionId = options2_2.Single(p => p.Description == "Stop and look back.").Id;
                 roadBlock3_1.StartingPoint = false;
 
@@ -282,7 +348,7 @@ namespace BagoLootAPI.Data
 
                 RoadBlock roadBlock3_2 = new RoadBlock();
                 roadBlock3_2.AdventureId = adventure.Single(a => a.Title == "The Epic One").Id;
-                roadBlock3_2.Description = "You run faster than you've ever run before.  From behind you comes a ground shaking roar and you feel the ground shaking beneath you.  You steal a glance behind you and see an enormous creature barelling towards you!  Clearly the woman wasn't telling you the entire truth.  The woman, now in the form of a huge werewolf, grabs you by the leg and you topple to the ground.  You roll over on your back to see the behemoth tower above you!  It raises it's claws and roars!";
+                roadBlock3_2.Description = "You run faster than you've ever run before.  From behind you comes a ground shaking roar and you feel the ground shaking beneath you.  You steal a glance behind you and see an enormous dragon barelling towards you!  Clearly the woman wasn't telling you the entire truth.  The woman, now in the form of a immense black dragon, unfurls her immense wings.  The gust of wind from her wings causes you to plummet to the ground.  You roll over on your back to see the behemoth tower above you!  It raises it's head with smoke and fiery sparks escaping its jaws and roars!";
                 roadBlock3_2.StartingPoint = false;
                 roadBlock3_2.PreviousOptionId = options2_2.Single(p => p.Description == "RUN FAST!").Id;
 
@@ -316,7 +382,7 @@ namespace BagoLootAPI.Data
 
                 RoadBlock roadBlock4_Final = new RoadBlock();
                 roadBlock4_Final.AdventureId = adventure.Single(a => a.Title == "The Epic One").Id;
-                roadBlock4_Final.Description = "The werewolf let's out one final gutteral howl as it drops lifelessly to the ground.  You dust yourself off, sheath your sword and head to the nearest tavern.  You deserve a drink!";
+                roadBlock4_Final.Description = "The dragon let's out one final gutteral roar as it drops lifelessly to the ground.  You dust yourself off, sheath your sword and head to the nearest tavern.  You deserve a drink!";
                 roadBlock4_Final.PreviousOptionId = option3_1.Id;
                 roadBlock4_Final.StartingPoint = false;
 
@@ -325,7 +391,7 @@ namespace BagoLootAPI.Data
 
                 RoadBlock roadBlock4_2Final = new RoadBlock();
                 roadBlock4_2Final.AdventureId = adventure.Single(a => a.Title == "The Epic One").Id;
-                roadBlock4_2Final.Description = "The werewolf let's out one final gutteral howl as it drops lifelessly to the ground.  You dust yourself off, sheath your sword and head to the nearest tavern.  You deserve a drink!";
+                roadBlock4_2Final.Description = "The dragon let's out one final gutteral roar as it drops lifelessly to the ground.  You dust yourself off, sheath your sword and head to the nearest tavern.  You deserve a drink!";
                 roadBlock4_2Final.PreviousOptionId = option3_1.Id;
                 roadBlock4_2Final.StartingPoint = false;
 
