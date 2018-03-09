@@ -6,18 +6,25 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using EpicGameAPI.Data;
 using EpicGameAPI.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Specialized;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.Sqlite;
 
 namespace EpicGameAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Character")]
+    [Route("api/character")]
     public class CharacterController : Controller
     {
         private ApplicationDbContext _context;
+        private readonly UserManager<User> _userMangaer;
+        private Task<User> GetCurrentUserAsync() => _userMangaer.GetUserAsync(HttpContext.User);
 
-        public CharacterController(ApplicationDbContext ctx)
+        public CharacterController(ApplicationDbContext ctx, UserManager<User> usermanager)
         {
             _context = ctx;
+            _userMangaer = usermanager;
         }
 
         //GET api/character
@@ -25,25 +32,83 @@ namespace EpicGameAPI.Controllers
         public IActionResult Get()
         {
             var characters = _context.Character.ToList();
+            List<Character> characterList = new List<Character>();
+            foreach(Character ch in characters)
+            {
+                var unitClass = from c in _context.Character
+                            where c.Id == ch.Id
+                            join u in _context.UnitClass on c.UnitClassId equals u.Id
+                            select u;
+
+                ch.UnitClass = unitClass.Single();
+                characterList.Add(ch);
+            }
 
             if(characters == null)
             {
                 return NotFound();
             }
-            return Ok(characters);
+            return Ok(characterList);
         }
 
         //GET api/character/{id}
-        [HttpGet]
+        [HttpGet("{id}", Name = "GetSingleCharacter")]
         public IActionResult Get(int id)
         {
-            var character = _context.Character.Single(c => c.Id == id);
+            var character = _context.Character.SingleOrDefault(c => c.Id == id);
 
             if(character == null)
             {
                 return NotFound();
             }
+            
+
+           var unitClass = from c in _context.Character
+                            where c.Id == character.Id
+                            join u in _context.UnitClass on c.UnitClassId equals u.Id
+                            select u;
+                character.UnitClass = unitClass.Single();
+            
+
             return Ok(character);
+        }
+
+        //POST api/character
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody]Character character)
+        {
+            User user = await _context.User.Where(u => u.UserName == User.Identity.Name).SingleOrDefaultAsync();
+
+            ModelState.Remove("User");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            character.User = user;
+
+            _context.Character.Add(character);
+
+            try
+            {
+               await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException)
+            {
+                if(CharacterExists(character.Id))
+                {
+                    return new StatusCodeResult(StatusCodes.Status409Conflict);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return CreatedAtRoute("GetSingleCharacter", new {id = character.Id }, character);
+        }
+
+        private bool CharacterExists(int Id)
+        {
+            return _context.Character.Any(c => c.Id == Id);
         }
     }
 }

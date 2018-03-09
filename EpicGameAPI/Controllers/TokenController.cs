@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using EpicGameAPI.Models;
 using EpicGameAPI.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Specialized;
 
 namespace EpicGameAPI.Controllers
 {
