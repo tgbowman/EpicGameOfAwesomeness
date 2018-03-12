@@ -54,7 +54,7 @@ namespace EpicGameAPI.Controllers
 
         //GET api/advnentureChoice/{characterId}/{adventureId}
         [HttpGet("adventureChoice/{characterId}/{adventureId}", Name = "GetCharacterAdventureChoicesPerStory")]
-        [Route("api/adventureChoice/{characterId}/{adventureId}")]
+        // [Route("api/adventureChoice/{characterId}/{adventureId}")]
 
         public async Task<IActionResult> Get(int characterId, int adventureId)
         {

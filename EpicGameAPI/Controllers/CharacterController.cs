@@ -76,6 +76,7 @@ namespace EpicGameAPI.Controllers
 
         //POST api/character
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Post([FromBody]Character character)
         {
             User user = await _context.User.Where(u => u.UserName == User.Identity.Name).SingleOrDefaultAsync();
@@ -115,7 +116,7 @@ namespace EpicGameAPI.Controllers
         //PATCH api/character/{id}
         //Use this to update the HP of the user's character after combat
         [HttpPatch("{characterId}", Name="UpdateCharacterHP")]
-        // [Authorize]
+        [Authorize]
         public async Task<IActionResult> UpdateHP(int characterId, [FromBody]CharacterHPUpdate hPUpdate)
         {
             var character = await _context.Character.SingleOrDefaultAsync(c => c.Id == characterId);
