@@ -27,5 +27,7 @@ namespace EpicGameAPI.Models
         public bool GameOver { get; set; }
 
         public virtual ICollection<StoryPath> StoryPaths { get; set; }
+
+        
     }
 }

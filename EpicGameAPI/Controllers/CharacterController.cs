@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Specialized;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.Sqlite;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EpicGameAPI.Controllers
 {
@@ -110,5 +111,35 @@ namespace EpicGameAPI.Controllers
         {
             return _context.Character.Any(c => c.Id == Id);
         }
+
+        //PATCH api/character/{id}
+        //Use this to update the HP of the user's character after combat
+        [HttpPatch("{characterId}", Name="UpdateCharacterHP")]
+        // [Authorize]
+        public async Task<IActionResult> UpdateHP(int characterId, [FromBody]CharacterHPUpdate hPUpdate)
+        {
+            var character = await _context.Character.SingleOrDefaultAsync(c => c.Id == characterId);
+
+            if(character == null)
+            {
+                return NotFound();
+            }
+
+            character.HP = hPUpdate.HP;
+
+            _context.Character.Update(character);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException e)
+            {
+                throw e;
+            }
+
+            return CreatedAtRoute("GetSingleCharacter", new{id = character.Id}, character);
+        }
+
     }
 }
