@@ -32,7 +32,7 @@ namespace EpicGameAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var characters = _context.Character.ToList();
+            var characters = _context.Character.Include("User").ToList();
             List<Character> characterList = new List<Character>();
             foreach(Character ch in characters)
             {
@@ -40,7 +40,8 @@ namespace EpicGameAPI.Controllers
                             where c.Id == ch.Id
                             join u in _context.UnitClass on c.UnitClassId equals u.Id
                             select u;
-
+               
+                            
                 ch.UnitClass = unitClass.Single();
                 characterList.Add(ch);
             }
@@ -56,7 +57,7 @@ namespace EpicGameAPI.Controllers
         [HttpGet("{id}", Name = "GetSingleCharacter")]
         public IActionResult Get(int id)
         {
-            var character = _context.Character.SingleOrDefault(c => c.Id == id);
+            var character = _context.Character.Include("User").SingleOrDefault(c => c.Id == id);
 
             if(character == null)
             {
@@ -73,6 +74,7 @@ namespace EpicGameAPI.Controllers
 
             return Ok(character);
         }
+
 
         //POST api/character
         [HttpPost]

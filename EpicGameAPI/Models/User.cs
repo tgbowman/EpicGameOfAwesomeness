@@ -11,10 +11,12 @@ namespace EpicGameAPI.Models
     {
 
 
-        [Required]
-        string FirstName { get; set; }
+        // [Required]
+        // public string FirstName { get; set; }
         
-        [Required]
-        string LastName { get; set; }
+        // [Required]
+        // public string LastName { get; set; }
+
+        public ICollection<Character> Character {get; set;}
     }
 }

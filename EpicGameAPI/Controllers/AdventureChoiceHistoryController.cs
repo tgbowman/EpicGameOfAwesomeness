@@ -71,7 +71,7 @@ namespace EpicGameAPI.Controllers
         //POST api/adventureChoice
 
         [HttpPost]
-        [Authorize]
+        // [Authorize]
 
         public async Task<IActionResult> Post([FromBody]AdventureChoiceHistory ach)
         {

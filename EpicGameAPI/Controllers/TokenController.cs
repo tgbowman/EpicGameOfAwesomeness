@@ -50,8 +50,10 @@ namespace EpicGameAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(string username, string password)
+        public async Task<IActionResult> Create([FromBody] UserLoginRequest userData )
         {
+            string username = userData.username;
+            string password = userData.password;
             // Hard coding role here for now
             string role = "Administrator";
 
@@ -73,6 +75,11 @@ namespace EpicGameAPI.Controllers
                     {
                         return new ObjectResult(GenerateToken(user.UserName, role));
                     }
+                    else
+                    {
+                        return BadRequest();
+                    }
+
                 }
                 else
                 {
@@ -80,7 +87,7 @@ namespace EpicGameAPI.Controllers
 
                     // User does not exist, create one
                     user = new User
-                    {
+                    {   
                         UserName = username,
                         NormalizedUserName = username.ToUpper(),
                         Email = username,
