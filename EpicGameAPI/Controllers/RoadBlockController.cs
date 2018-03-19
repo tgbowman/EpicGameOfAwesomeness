@@ -39,12 +39,20 @@ namespace EpicGameAPI.Controllers
 
             foreach(RoadBlock rb in roadBlocks)
             {
+                List<PathOption> pathOptionList = new List<PathOption>();
                 var storyPaths = from r in _context.RoadBlock
                                 where r.Id == rb.Id
                                 join rbp in _context.StoryPath on r.Id equals rbp.RoadBlockId
                                 select rbp;
                 
-                rb.StoryPaths = await storyPaths.ToListAsync();
+                foreach(StoryPath s in storyPaths)
+                    {                  
+                        var pathOption = await _context.PathOption.Where(p => p.Id == s.PathOptionId).SingleOrDefaultAsync();
+                        pathOptionList.Add(pathOption);
+                    }
+
+                
+                // rb.StoryPaths = await storyPaths.ToListAsync();
                 roadBlockList.Add(rb);
             }
             return Ok(roadBlockList);
