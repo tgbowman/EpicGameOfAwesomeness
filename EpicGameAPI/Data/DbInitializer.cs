@@ -45,7 +45,7 @@ namespace EpicGameAPI.Data
                     await userstore.AddToRoleAsync(user, "Administrator");
                 }
 
-                // Look for any products.
+                // Look for any unitClasses.
                 if (context.UnitClass.Any())
                 {
                     return;   // DB has been seeded
@@ -63,7 +63,8 @@ namespace EpicGameAPI.Data
 
                         AbilityTwoName = "Slap of Death",
                         AbilityTwoDescription = "Slap the life right out of the enemy!",
-                        AbilityTwoDamage= 50
+                        AbilityTwoDamage= 50,
+                        HpModifier=1
                     },
 
                 };

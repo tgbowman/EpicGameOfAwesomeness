@@ -24,6 +24,8 @@ namespace EpicGameAPI.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Description");
+
                     b.Property<string>("Title")
                         .IsRequired();
 
@@ -111,6 +113,8 @@ namespace EpicGameAPI.Migrations
                     b.Property<string>("Description")
                         .IsRequired();
 
+                    b.Property<string>("EnemyType");
+
                     b.Property<bool>("LeadsToCombat");
 
                     b.HasKey("Id");
@@ -183,6 +187,8 @@ namespace EpicGameAPI.Migrations
 
                     b.Property<string>("AbilityTwoName")
                         .IsRequired();
+
+                    b.Property<int>("HpModifier");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -375,7 +381,7 @@ namespace EpicGameAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("EpicGameAPI.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Character")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

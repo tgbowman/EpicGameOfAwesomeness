@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace EpicGameAPI.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +14,7 @@ namespace EpicGameAPI.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Description = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -67,6 +68,7 @@ namespace EpicGameAPI.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Description = table.Column<string>(nullable: false),
+                    EnemyType = table.Column<string>(nullable: true),
                     LeadsToCombat = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -86,6 +88,7 @@ namespace EpicGameAPI.Migrations
                     AbilityTwoDamage = table.Column<int>(nullable: false),
                     AbilityTwoDescription = table.Column<string>(nullable: false),
                     AbilityTwoName = table.Column<string>(nullable: false),
+                    HpModifier = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>

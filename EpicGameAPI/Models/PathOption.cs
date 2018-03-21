@@ -14,7 +14,10 @@ namespace EpicGameAPI.Models
         [Required]
         public bool LeadsToCombat { get; set; }
 
+        public string EnemyType { get; set; }
+
         public virtual ICollection<StoryPath> StoryPaths { get; set; }
+
 
     }
 }

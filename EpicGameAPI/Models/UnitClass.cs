@@ -24,6 +24,9 @@ namespace EpicGameAPI.Models
         public string AbilityTwoDescription { get; set; }
         [Required]
         public int AbilityTwoDamage { get; set; }
+        
+        [Required]
+        public int HpModifier {get; set ;}
 
 
 

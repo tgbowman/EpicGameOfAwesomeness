@@ -39,7 +39,7 @@ namespace EpicGameAPI.Controllers
         }
 
         //GET api/adventureChoice/{characterId}
-        [HttpGet("adventureChoice/{characterId}", Name="GetAllCharacterAdventureChoices")]
+        [HttpGet("{characterId}", Name="GetAllCharacterAdventureChoices")]
         public async Task<IActionResult> Get(int characterId)
         {
             var characterChoices = await _context.AdventureChoiceHistory.Where(a => a.CharacterId == characterId).ToListAsync();
@@ -53,9 +53,8 @@ namespace EpicGameAPI.Controllers
         }
 
         //GET api/advnentureChoice/{characterId}/{adventureId}
-        [HttpGet("adventureChoice/{characterId}/{adventureId}", Name = "GetCharacterAdventureChoicesPerStory")]
+        [HttpGet("{characterId}/{adventureId}", Name = "GetCharacterAdventureChoicesPerStory")]
         // [Route("api/adventureChoice/{characterId}/{adventureId}")]
-
         public async Task<IActionResult> Get(int characterId, int adventureId)
         {
             var characterAdventureChoices = await _context.AdventureChoiceHistory.Where(a => a.CharacterId == characterId && a.AdventureId == adventureId).ToListAsync();
@@ -64,8 +63,12 @@ namespace EpicGameAPI.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(characterAdventureChoices);
+            if(characterAdventureChoices.Count > 0)
+            {
+            return Ok(characterAdventureChoices[characterAdventureChoices.Count -1]);
+            } else {
+                return Ok(characterAdventureChoices);
+            }
         }
 
         //POST api/adventureChoice
@@ -105,6 +108,31 @@ namespace EpicGameAPI.Controllers
         {
             return _context.AdventureChoiceHistory.Any(a => a.Id == id);
         }
+
+        //DELETE delete all adventure Choices for a character on a particular adventure
+
+        [HttpDelete("{characterId}/{adventureId}", Name="DeleteCharacterAdventureData")]
+        [Authorize]
+
+        public async Task<IActionResult> Delete(int characterId, int adventureId)
+        {
+            var characterDataPresent =  await _context.AdventureChoiceHistory.AnyAsync(a => a.AdventureId == adventureId && a.CharacterId == characterId);
+
+            if(characterDataPresent)
+            {
+                var allCharacterChoices = await _context.AdventureChoiceHistory.Where(a => a.AdventureId == adventureId && a.CharacterId == characterId).ToListAsync();
+                allCharacterChoices.ForEach(c => {
+                    _context.Remove(c);
+                });
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else{
+                return NotFound();
+            }
+        }
+
+
 
 
     }

@@ -1747,19 +1747,6 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational.Design/2.0.0-preview1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "2.0.0-preview1-final",
-          "NETStandard.Library": "2.0.0-preview1-25301-01"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
-        }
-      },
       "Microsoft.EntityFrameworkCore.Sqlite/2.0.1": {
         "type": "package",
         "dependencies": {
@@ -1778,20 +1765,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {}
-        }
-      },
-      "Microsoft.EntityFrameworkCore.Sqlite.Design/2.0.0-preview1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational.Design": "2.0.0-preview1-final",
-          "Microsoft.EntityFrameworkCore.Sqlite.Core": "2.0.0-preview1-final",
-          "NETStandard.Library": "2.0.0-preview1-25301-01"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.Design.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.Design.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.SqlServer/2.0.1": {
@@ -3291,69 +3264,6 @@
         },
         "runtime": {
           "lib/netstandard1.5/StackExchange.Redis.StrongName.dll": {}
-        }
-      },
-      "Swashbuckle.AspNetCore/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "Swashbuckle.AspNetCore.Swagger": "1.1.0",
-          "Swashbuckle.AspNetCore.SwaggerGen": "1.1.0",
-          "Swashbuckle.AspNetCore.SwaggerUI": "1.1.0"
-        },
-        "compile": {
-          "lib/netstandard1.6/Swashbuckle.AspNetCore.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Swashbuckle.AspNetCore.dll": {}
-        }
-      },
-      "Swashbuckle.AspNetCore.Swagger/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.4",
-          "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.4",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/Swashbuckle.AspNetCore.Swagger.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Swashbuckle.AspNetCore.Swagger.dll": {}
-        }
-      },
-      "Swashbuckle.AspNetCore.SwaggerGen/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Mvc.ApiExplorer": "1.0.4",
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.4",
-          "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.4",
-          "NETStandard.Library": "1.6.1",
-          "Swashbuckle.AspNetCore.Swagger": "1.1.0",
-          "System.Xml.XPath": "4.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
-        }
-      },
-      "Swashbuckle.AspNetCore.SwaggerUI/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Routing": "1.0.4",
-          "Microsoft.AspNetCore.StaticFiles": "1.0.4",
-          "Microsoft.Extensions.FileProviders.Embedded": "1.0.1",
-          "NETStandard.Library": "1.6.1",
-          "Newtonsoft.Json": "9.0.1",
-          "System.Xml.XPath": "4.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -5091,7 +5001,7 @@
           "System.Xml.ReaderWriter": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Xml.XPath.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.dll": {}
@@ -6516,17 +6426,6 @@
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational.Design/2.0.0-preview1-final": {
-      "sha512": "3BtBHSgNJaUrj+r5ARBTeRxjMq/og8NdzzdfuyYjwLT6QCX79mCAQ44/MMl5NfwRmPRIerCTUifunQmEZtMQ/w==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.relational.design/2.0.0-preview1-final",
-      "files": [
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll",
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.xml",
-        "microsoft.entityframeworkcore.relational.design.2.0.0-preview1-final.nupkg.sha512",
-        "microsoft.entityframeworkcore.relational.design.nuspec"
-      ]
-    },
     "Microsoft.EntityFrameworkCore.Sqlite/2.0.1": {
       "sha512": "DviCFjsYHkLHQMRKUFEG/rx65NbaP0NGFskBnw1t9lPdkkLG8KoAzxOs4KvTHnuykPHs6V7qR9f703dH6WCwkQ==",
       "type": "package",
@@ -6545,17 +6444,6 @@
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.xml",
         "microsoft.entityframeworkcore.sqlite.core.2.0.1.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlite.core.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.Sqlite.Design/2.0.0-preview1-final": {
-      "sha512": "mhNMzaMRYI3vwpSXCUnRabAwqtK/VVNOCWZe1VMaOmtaLQ9AmUZdLcwM1NRncDlzWssRN9by6ebLVlvBjImGog==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.sqlite.design/2.0.0-preview1-final",
-      "files": [
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.Design.dll",
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.Design.xml",
-        "microsoft.entityframeworkcore.sqlite.design.2.0.0-preview1-final.nupkg.sha512",
-        "microsoft.entityframeworkcore.sqlite.design.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.SqlServer/2.0.1": {
@@ -8570,56 +8458,6 @@
         "lib/netstandard1.5/StackExchange.Redis.StrongName.xml",
         "stackexchange.redis.strongname.1.2.4.nupkg.sha512",
         "stackexchange.redis.strongname.nuspec"
-      ]
-    },
-    "Swashbuckle.AspNetCore/1.1.0": {
-      "sha512": "xlbi/AUp3UM4DmPX0SIV50xboMZDl64pY45nBsdDJarUK0i5pSi/FLBqUOikdP7wUrFvtOAEnOW0cHkR6hyaeA==",
-      "type": "package",
-      "path": "swashbuckle.aspnetcore/1.1.0",
-      "files": [
-        "lib/net451/Swashbuckle.AspNetCore.dll",
-        "lib/netstandard1.6/Swashbuckle.AspNetCore.dll",
-        "swashbuckle.aspnetcore.1.1.0.nupkg.sha512",
-        "swashbuckle.aspnetcore.nuspec"
-      ]
-    },
-    "Swashbuckle.AspNetCore.Swagger/1.1.0": {
-      "sha512": "zOMSwaORAM916wnoDilH9eTyBN01Ch4L4VE8s4xIiESOpHMMHBvVmPxSGMsmo+CltgM74o92KVrIcLYGCKlbXQ==",
-      "type": "package",
-      "path": "swashbuckle.aspnetcore.swagger/1.1.0",
-      "files": [
-        "lib/net451/Swashbuckle.AspNetCore.Swagger.dll",
-        "lib/net451/Swashbuckle.AspNetCore.Swagger.xml",
-        "lib/netstandard1.6/Swashbuckle.AspNetCore.Swagger.dll",
-        "lib/netstandard1.6/Swashbuckle.AspNetCore.Swagger.xml",
-        "swashbuckle.aspnetcore.swagger.1.1.0.nupkg.sha512",
-        "swashbuckle.aspnetcore.swagger.nuspec"
-      ]
-    },
-    "Swashbuckle.AspNetCore.SwaggerGen/1.1.0": {
-      "sha512": "5ErpRhRIkJKRjQ33CsTIsmBypDsWQNp28CsM8UsOwZ9aaw3UBsU4Ts2ZDGe7yvZiti8FrU8iQ5VYw9bvrHiPpA==",
-      "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggergen/1.1.0",
-      "files": [
-        "lib/net451/Swashbuckle.AspNetCore.SwaggerGen.dll",
-        "lib/net451/Swashbuckle.AspNetCore.SwaggerGen.xml",
-        "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerGen.dll",
-        "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerGen.xml",
-        "swashbuckle.aspnetcore.swaggergen.1.1.0.nupkg.sha512",
-        "swashbuckle.aspnetcore.swaggergen.nuspec"
-      ]
-    },
-    "Swashbuckle.AspNetCore.SwaggerUI/1.1.0": {
-      "sha512": "gdV8MczYGIuxARtmDYBTbTKC0IJMhrQmZ4Uev8N/pOGQlTcwBYYlUn8X+8RcC7ATZQOOXBx4RBOlk+gbXbLfkg==",
-      "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggerui/1.1.0",
-      "files": [
-        "lib/net451/Swashbuckle.AspNetCore.SwaggerUI.dll",
-        "lib/net451/Swashbuckle.AspNetCore.SwaggerUI.xml",
-        "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerUI.dll",
-        "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerUI.xml",
-        "swashbuckle.aspnetcore.swaggerui.1.1.0.nupkg.sha512",
-        "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -13311,11 +13149,9 @@
       "Microsoft.AspNetCore.All >= 2.0.5",
       "Microsoft.AspNetCore.Cors >= 2.0.1",
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.0.1",
-      "Microsoft.EntityFrameworkCore.Sqlite.Design >= 2.0.0-preview1-final",
       "Microsoft.EntityFrameworkCore.Tools.DotNet >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.2",
-      "Swashbuckle.AspNetCore >= 1.1.0"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.2"
     ]
   },
   "packageFolders": {
@@ -13369,10 +13205,6 @@
             "target": "Package",
             "version": "[2.0.1, )"
           },
-          "Microsoft.EntityFrameworkCore.Sqlite.Design": {
-            "target": "Package",
-            "version": "[2.0.0-preview1-final, )"
-          },
           "Microsoft.EntityFrameworkCore.Tools.DotNet": {
             "target": "Package",
             "version": "[2.0.0, )"
@@ -13385,10 +13217,6 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.0.2, )"
-          },
-          "Swashbuckle.AspNetCore": {
-            "target": "Package",
-            "version": "[1.1.0, )"
           }
         },
         "imports": [
@@ -13398,17 +13226,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Microsoft.Extensions.Primitives 2.0.0-preview1-final depends on System.Runtime.CompilerServices.Unsafe (>= 4.4.0-preview1-25219-04) but System.Runtime.CompilerServices.Unsafe 4.4.0-preview1-25219-04 was not found. An approximate best match of System.Runtime.CompilerServices.Unsafe 4.4.0-preview1-25305-02 was resolved.",
-      "libraryId": "System.Runtime.CompilerServices.Unsafe",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    }
-  ]
+  }
 }
