@@ -10,5 +10,5 @@ This Web API was built using C# .NET and SQLite.  When you launch the API for th
 4. This will start running the API on http://localhost:5000
 
 ### API XHR Request Syntax:
-1. http://localhost:5000/api/{DatabaseTableName . 
+1. http://localhost:5000/api/{DatabaseTableName} .    
 *** More syntax examples for specific request can be seen on that tables Controller within the source code.***
